@@ -18,9 +18,9 @@ type SubmitState = "idle" | "loading" | "success" | "error";
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || "/";
 
 const SUBJECT_OPTIONS = [
-  { value: "Obtenir une machine", label: "Obtenir une machine" },
   { value: "Proposer un partenariat", label: "Proposer un partenariat" },
   { value: "Poser une question générale", label: "Poser une question générale" },
+  { value: "Remboursement", label: "Remboursement" },
   { value: "Autre", label: "Autre" },
 ] as const;
 
@@ -132,7 +132,7 @@ export default function ContactForm() {
     } catch {
       setSubmitState("error");
       setSubmitError(
-        "L'envoi a échoué. Réessayez dans un moment, ou écrivez-nous à bonjour@apdm.ca.",
+        "L'envoi a échoué. Réessayez dans un moment, ou écrivez-nous à info@apdmdistribution.com.",
       );
     }
   }
@@ -162,7 +162,7 @@ export default function ContactForm() {
         <>
           <div className="form-heading">
             <h2 id="contact-title">Écrivez-nous</h2>
-            <p>Une question, un projet, une collaboration? On vous répond rapidement.</p>
+            <p>Une question, un projet, une collaboration? N'hésitez pas à nous contacter.</p>
           </div>
 
           <form

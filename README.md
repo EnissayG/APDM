@@ -1,4 +1,4 @@
-# APDM - Site de contact
+# APDM · Site de contact
 
 Page de contact pour APDM (machines distributrices d’essentiels pharmaceutiques, Montréal).
 

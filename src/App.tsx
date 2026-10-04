@@ -80,7 +80,7 @@ export default function App() {
             </h1>
             <p className="intro-copy">
               Des machines distributrices d’essentiels pharmaceutiques, pensées pour les
-              entreprises et les lieux publics d’ici.
+              imprévus du quotidien.
             </p>
             <a className="intro-link" href="#contact-title">
               Parlez-nous de votre projet <span aria-hidden="true">↓</span>
@@ -120,13 +120,9 @@ export default function App() {
               <b aria-hidden="true">✚</b>
               <span>PREMIERS SOINS</span>
               <b aria-hidden="true">✚</b>
-              <span>PANSEMENTS</span>
-              <b aria-hidden="true">✚</b>
               <span>ANALGÉSIQUES</span>
               <b aria-hidden="true">✚</b>
-              <span>HYGIÈNE</span>
-              <b aria-hidden="true">✚</b>
-              <span>ACCESSIBLE 24/7</span>
+              <span>HYGIÈNE FÉMININE</span>
               <b aria-hidden="true">✚</b>
             </div>
             <div className="marquee-group" aria-hidden="true">
@@ -134,13 +130,9 @@ export default function App() {
               <b>✚</b>
               <span>PREMIERS SOINS</span>
               <b>✚</b>
-              <span>PANSEMENTS</span>
-              <b>✚</b>
               <span>ANALGÉSIQUES</span>
               <b>✚</b>
-              <span>HYGIÈNE</span>
-              <b>✚</b>
-              <span>ACCESSIBLE 24/7</span>
+              <span>HYGIÈNE FÉMININE</span>
               <b>✚</b>
             </div>
           </div>
