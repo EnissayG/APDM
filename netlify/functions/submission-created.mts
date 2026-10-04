@@ -28,7 +28,7 @@ function escapeHtml(value: string): string {
 
 function textOrDash(value: string | undefined): string {
   const trimmed = value?.trim() ?? "";
-  return trimmed.length > 0 ? trimmed : "—";
+  return trimmed.length > 0 ? trimmed : "-";
 }
 
 function buildEmailShell(options: {
@@ -111,7 +111,7 @@ function buildNotificationEmail(data: FormData, logoUrl: string | null) {
     .join("");
 
   const html = buildEmailShell({
-    title: `Nouvelle demande — ${sujet}`,
+    title: `Nouvelle demande - ${sujet}`,
     preheader: `Message de ${nom} : ${sujet}`,
     logoUrl,
     bodyHtml: `
@@ -136,7 +136,7 @@ ${escapeHtml(message)}
   });
 
   const text = [
-    "Nouvelle demande de contact — APDM",
+    "Nouvelle demande de contact - APDM",
     "",
     `Nom : ${nom}`,
     `Entreprise : ${entreprise}`,
@@ -148,7 +148,7 @@ ${escapeHtml(message)}
     message,
   ].join("\n");
 
-  return { html, text, subject: `[APDM] ${sujet} — ${nom}` };
+  return { html, text, subject: `[APDM] ${sujet} - ${nom}` };
 }
 
 function buildConfirmationEmail(data: FormData, logoUrl: string | null) {
@@ -202,7 +202,7 @@ ${escapeHtml(message)}
   return {
     html,
     text,
-    subject: "Merci, on a bien reçu votre message — APDM",
+    subject: "Merci, on a bien reçu votre message - APDM",
   };
 }
 

@@ -34,7 +34,7 @@ jobs:
 
       - name: Build
         env:
-          # Défaut: /REPO/ — override via Settings → Variables → BASE_PATH (ex. "/" pour domaine custom)
+          # Défaut: /REPO/ - override via Settings → Variables → BASE_PATH (ex. "/" pour domaine custom)
           BASE_PATH: ${{ vars.BASE_PATH || format('/{0}/', github.event.repository.name) }}
         run: npm run build
 

@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700;800;900&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -9,7 +8,7 @@
   --white: #fffaf0;
   --line: 3px solid var(--brown);
   --hard-shadow: 6px 6px 0 var(--brown);
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito", "Segoe UI", "Helvetica Neue", sans-serif;
   color: var(--brown);
   background: var(--blue);
   font-synthesis: none;
@@ -141,7 +140,7 @@ select {
 
 h1,
 h2 {
-  font-family: "Lobster", cursive;
+  font-family: "Lobster", "Segoe UI", Georgia, serif;
   font-weight: 400;
 }
 
@@ -916,6 +915,126 @@ footer a {
   }
 }
 
+/* --- Splash d'entrée --- */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 22px;
+  background: var(--blue);
+  transition:
+    opacity 480ms ease,
+    visibility 480ms ease;
+}
+
+.splash.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(340px, 82vw);
+  aspect-ratio: 1;
+}
+
+.splash-pulse {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--brown);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--cream) 55%, transparent);
+  box-shadow: 5px 5px 0 var(--brown);
+  opacity: 0.55;
+  animation: splash-pulse 1.4s ease-in-out infinite;
+}
+
+.splash-logo {
+  position: relative;
+  z-index: 1;
+  width: 62%;
+  height: auto;
+  animation: splash-logo-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.splash-tag {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brown);
+  animation: splash-tag-in 600ms 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.site-shell.is-covered {
+  opacity: 0;
+}
+
+.site-shell.is-revealed {
+  animation: site-reveal 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+html.is-booting .title-word,
+html.is-booting .benefit,
+html.is-booting .form-card,
+html.is-booting .marquee-track,
+html.is-booting .hand-wrap,
+html.is-booting .success-hand {
+  animation-play-state: paused !important;
+}
+
+@keyframes splash-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes splash-tag-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes splash-pulse {
+  0%,
+  100% {
+    transform: scale(0.97);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.72;
+  }
+}
+
+@keyframes site-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -927,6 +1046,17 @@ footer a {
 
   .title-word,
   .benefit {
+    opacity: 1;
+    transform: none;
+  }
+
+  .splash.is-leaving {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .site-shell.is-covered,
+  .site-shell.is-revealed {
     opacity: 1;
     transform: none;
   }
