@@ -1,17 +1,8 @@
-import { FormEvent, ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import handSource from "./assets/apdm-hand.png";
-import logoSource from "./assets/apdm-logo.png";
-
-type FormErrors = {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-};
-
-function Logo() {
-  return <img className="site-logo" src={logoSource} alt="APDM" />;
-}
+import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function EssentialIcon() {
   return (
@@ -59,165 +50,10 @@ function Benefit({
   );
 }
 
-function Field({
-  id,
-  label,
-  optional,
-  error,
-  children,
-}: {
-  id: string;
-  label: string;
-  optional?: boolean;
-  error?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className={`field ${error ? "field-error" : ""}`}>
-      <label htmlFor={id}>
-        {label} {optional && <span>(optionnel)</span>}
-      </label>
-      {children}
-      {error && (
-        <p className="error-message" id={`${id}-error`}>
-          {error}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function ContactForm() {
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const nextErrors: FormErrors = {};
-
-    if (!String(data.get("name") || "").trim()) {
-      nextErrors.name = "Dites-nous comment vous appeler.";
-    }
-    const email = String(data.get("email") || "").trim();
-    if (!email) {
-      nextErrors.email = "Votre courriel est requis.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      nextErrors.email = "Entrez un courriel valide.";
-    }
-    if (!data.get("subject")) {
-      nextErrors.subject = "Choisissez un sujet.";
-    }
-    if (!String(data.get("message") || "").trim()) {
-      nextErrors.message = "Ajoutez quelques mots à votre message.";
-    }
-
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      setSent(true);
-    }
-  }
-
-  return (
-    <section
-      className={`form-card ${sent ? "is-sent" : ""}`}
-      aria-labelledby="contact-title"
-    >
-      {sent ? (
-        <div className="success-panel" role="status">
-          <img className="success-hand" src={handSource} alt="" aria-hidden="true" />
-          <p className="eyebrow">Message envoyé</p>
-          <h2 id="contact-title">Merci!</h2>
-          <p>On vous revient sous 48 h.</p>
-          <button type="button" className="text-button" onClick={() => setSent(false)}>
-            Envoyer un autre message
-          </button>
-        </div>
-      ) : (
-        <>
-          <div className="form-heading">
-            <h2 id="contact-title">Écrivez-nous</h2>
-            <p>Une question, un projet, une collaboration? On vous répond rapidement.</p>
-          </div>
-
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="form-row">
-              <Field id="name" label="Nom complet" error={errors.name}>
-                <input
-                  id="name"
-                  name="name"
-                  autoComplete="name"
-                  aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? "name-error" : undefined}
-                />
-              </Field>
-              <Field id="company" label="Entreprise" optional>
-                <input id="company" name="company" autoComplete="organization" />
-              </Field>
-            </div>
-            <div className="form-row">
-              <Field id="email" label="Courriel" error={errors.email}>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  aria-invalid={Boolean(errors.email)}
-                  aria-describedby={errors.email ? "email-error" : undefined}
-                />
-              </Field>
-              <Field id="phone" label="Téléphone" optional>
-                <input id="phone" name="phone" type="tel" autoComplete="tel" />
-              </Field>
-            </div>
-            <Field id="subject" label="Sujet" error={errors.subject}>
-              <div className="select-wrap">
-                <select
-                  id="subject"
-                  name="subject"
-                  defaultValue=""
-                  aria-invalid={Boolean(errors.subject)}
-                  aria-describedby={errors.subject ? "subject-error" : undefined}
-                >
-                  <option value="" disabled>
-                    Choisissez une option
-                  </option>
-                  <option value="machine">Obtenir une machine</option>
-                  <option value="partnership">Proposer un partenariat</option>
-                  <option value="question">Poser une question générale</option>
-                  <option value="other">Autre</option>
-                </select>
-              </div>
-            </Field>
-            <Field id="message" label="Message" error={errors.message}>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                placeholder="Parlez-nous de votre idée..."
-                aria-invalid={Boolean(errors.message)}
-                aria-describedby={errors.message ? "message-error" : undefined}
-              />
-            </Field>
-            <button className="submit-button" type="submit">
-              <span>Envoyer</span>
-              <span className="button-arrow" aria-hidden="true">
-                →
-              </span>
-            </button>
-          </form>
-        </>
-      )}
-    </section>
-  );
-}
-
 export default function App() {
   return (
     <div className="site-shell">
-      <header className="site-header">
-        <Logo />
-      </header>
+      <Header />
 
       <main className="landing-grid">
         <section className="intro" aria-labelledby="page-title">
@@ -299,11 +135,7 @@ export default function App() {
         </div>
       </div>
 
-      <footer>
-        <a href="mailto:bonjour@apdm.ca">bonjour@apdm.ca</a>
-        <span>Montréal, Québec</span>
-        <span>© {new Date().getFullYear()} APDM</span>
-      </footer>
+      <Footer />
     </div>
   );
 }
