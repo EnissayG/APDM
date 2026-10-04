@@ -1,0 +1,10 @@
+{
+  "description": "Facilite la prise de contact avec APDM via un formulaire simple et accessible pour demandes, partenariats ou questions sur leurs machines distributrices.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
