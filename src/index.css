@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  /* Palette pastel soins essentiels : légèreté, accessibilité (DA inchangée) */
-  --blue: #dff1f4;
-  --cream: #fffbf7;
-  --brown: #3a4f5c;
-  --red: #c89090;
+  /* Pharmacie douce : lilas poudré, fiable et féminin */
+  --blue: #ebe7f5;
+  --cream: #fffbfe;
+  --brown: #3f3d56;
+  --red: #8f84b8;
   --white: #ffffff;
-  --line: 2.5px solid color-mix(in srgb, var(--brown) 72%, transparent);
-  --hard-shadow: 5px 5px 0 color-mix(in srgb, var(--brown) 28%, #9ec5c9);
+  --line: 2.5px solid color-mix(in srgb, var(--brown) 58%, transparent);
+  --hard-shadow: 5px 5px 0 color-mix(in srgb, var(--brown) 18%, #b7b0d4);
   font-family: "Nunito", "Segoe UI", "Helvetica Neue", sans-serif;
   color: var(--brown);
   background: var(--blue);
@@ -552,10 +552,10 @@ footer a {
 .marquee {
   width: 100%;
   overflow: hidden;
-  border: 2.5px solid color-mix(in srgb, var(--brown) 55%, transparent);
+  border: 2.5px solid color-mix(in srgb, var(--brown) 40%, transparent);
   border-radius: 4px;
   color: #fff;
-  background: color-mix(in srgb, var(--red) 82%, var(--brown) 18%);
+  background: color-mix(in srgb, var(--red) 78%, var(--brown) 22%);
 }
 
 .marquee-track {
