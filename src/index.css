@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  /* Couleurs marque (feedback Sara) : beige logo, brun textes, rouge actions */
+  /* Beige page, brun machine, rouge titres et actions */
   --blue: #fbefd5;
   --cream: #fffaf0;
   --brown: #4a1f14;
+  --machine: #574342;
   --red: #c4302f;
   --white: #ffffff;
   --line: 3px solid var(--brown);
@@ -43,20 +44,24 @@ select {
 }
 
 .site-shell {
+  --shell-pad: clamp(16px, 4vw, 64px);
   width: min(1440px, 100%);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 22px clamp(16px, 4vw, 64px) 0;
+  padding: 0 var(--shell-pad) 0;
   overflow-x: clip;
 }
 
 .site-header {
-  min-height: 108px;
   display: flex;
   align-items: center;
-  padding: 8px 0;
-  overflow: visible;
-  border-bottom: 2px solid color-mix(in srgb, var(--brown) 28%, transparent);
+  justify-content: space-between;
+  gap: 18px 28px;
+  min-height: 108px;
+  margin-inline: calc(var(--shell-pad) * -1);
+  padding: 12px var(--shell-pad);
+  background: var(--machine);
+  border-bottom: 5px solid var(--red);
 }
 
 .site-logo-link {
@@ -75,6 +80,37 @@ select {
   width: 172px;
   height: auto;
   overflow: visible;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.site-nav a {
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 8px 14px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+.site-nav a[aria-current="page"] {
+  border-color: color-mix(in srgb, var(--cream) 55%, transparent);
+  background: color-mix(in srgb, var(--cream) 14%, transparent);
+}
+
+.site-nav a:hover {
+  color: var(--cream);
+  background: var(--red);
+  border-color: var(--red);
 }
 
 .honeypot {
@@ -143,6 +179,11 @@ h1,
 h2 {
   font-family: "Lobster", "Segoe UI", Georgia, serif;
   font-weight: 400;
+}
+
+h1,
+.form-heading h2 {
+  color: var(--red);
 }
 
 h1 {
@@ -729,7 +770,7 @@ footer a {
 /* Tablette portrait / grands téléphones */
 @media (max-width: 700px) {
   .site-header {
-    min-height: 92px;
+    gap: 10px 16px;
   }
 
   .site-logo {
@@ -775,12 +816,14 @@ footer a {
 /* Mobile */
 @media (max-width: 480px) {
   .site-shell {
+    --shell-pad: 14px;
     padding-inline: 14px;
   }
 
   .site-header {
-    min-height: 80px;
-    padding: 4px 0;
+    flex-wrap: wrap;
+    min-height: 0;
+    padding-block: 14px 12px;
   }
 
   .site-logo {
@@ -884,6 +927,7 @@ footer a {
 /* Très petits téléphones */
 @media (max-width: 360px) {
   .site-shell {
+    --shell-pad: 12px;
     padding-inline: 12px;
   }
 
