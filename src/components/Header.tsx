@@ -8,25 +8,27 @@ const links = [
 export default function Header() {
   return (
     <header className="site-header">
-      <a className="site-logo-link" href={import.meta.env.BASE_URL} aria-label="APDM Accueil">
-        <img className="site-logo" src={logoSource} alt="APDM" />
-      </a>
+      <div className="site-header-inner">
+        <a className="site-logo-link" href={import.meta.env.BASE_URL} aria-label="APDM Accueil">
+          <img className="site-logo" src={logoSource} alt="APDM" />
+        </a>
 
-      <div className="site-header-side">
-        <p className="site-locale">
-          <span aria-hidden="true">✚</span> Montréal <span aria-hidden="true">✚</span>
-        </p>
-        <nav className="site-nav" aria-label="Navigation principale">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              aria-current={link.current ? "page" : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        <div className="site-header-side">
+          <p className="site-locale">
+            <span aria-hidden="true">✚</span> Montréal <span aria-hidden="true">✚</span>
+          </p>
+          <nav className="site-nav" aria-label="Navigation principale">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                aria-current={link.current ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );
