@@ -12,17 +12,22 @@ export default function Header() {
         <img className="site-logo" src={logoSource} alt="APDM" />
       </a>
 
-      <nav className="site-nav" aria-label="Navigation principale">
-        {links.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            aria-current={link.current ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+      <div className="site-header-side">
+        <p className="site-locale">
+          <span aria-hidden="true">✚</span> Montréal <span aria-hidden="true">✚</span>
+        </p>
+        <nav className="site-nav" aria-label="Navigation principale">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              aria-current={link.current ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 }
