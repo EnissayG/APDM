@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  background-color: var(--machine);
 }
 
 body {
@@ -49,7 +51,6 @@ select {
   min-height: 100vh;
   margin: 0 auto;
   padding: 0 var(--shell-pad) 0;
-  overflow-x: clip;
 }
 
 .site-header {
@@ -871,6 +872,29 @@ footer a {
 }
 
 /* Mobile */
+@media (max-width: 700px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-top: calc(16px + env(safe-area-inset-top, 0px));
+    padding-bottom: 16px;
+  }
+
+  .site-header::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    height: 50vh;
+    background: var(--machine);
+  }
+}
+
 @media (max-width: 480px) {
   .site-shell {
     --shell-pad: 14px;
@@ -880,7 +904,6 @@ footer a {
   .site-header {
     flex-wrap: wrap;
     min-height: 0;
-    padding-block: 16px 14px;
   }
 
   .site-logo-link,
