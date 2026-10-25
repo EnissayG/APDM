@@ -45,7 +45,7 @@ function buildEmailShell(options: {
         </td>
       </tr>`
     : `<tr>
-        <td align="center" style="padding:0 0 24px;font-family:Georgia,'Times New Roman',serif;font-size:28px;color:#4A1F14;">
+        <td align="center" style="padding:0 0 24px;font-family:Georgia,'Times New Roman',serif;font-size:28px;color:#2E0C24;">
           APDM
         </td>
       </tr>`;
@@ -57,16 +57,16 @@ function buildEmailShell(options: {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(title)}</title>
 </head>
-<body style="margin:0;padding:0;background-color:#FBEFD5;">
+<body style="margin:0;padding:0;background-color:#E6D8BC;">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
     ${escapeHtml(preheader)}
   </div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FBEFD5;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#E6D8BC;">
     <tr>
       <td align="center" style="padding:32px 16px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background-color:#FFFAF0;border:3px solid #4A1F14;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background-color:#FFFAF0;border:3px solid #2E0C24;">
           <tr>
-            <td style="padding:32px 28px;font-family:Arial,Helvetica,sans-serif;color:#4A1F14;">
+            <td style="padding:32px 28px;font-family:Arial,Helvetica,sans-serif;color:#2E0C24;">
               ${logoBlock}
               ${bodyHtml}
             </td>
@@ -74,8 +74,8 @@ function buildEmailShell(options: {
         </table>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;">
           <tr>
-            <td align="center" style="padding:18px 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#4A1F14;">
-              APDM · Montréal, Québec · <a href="mailto:info@apdmdistribution.com" style="color:#C4302F;">info@apdmdistribution.com</a>
+            <td align="center" style="padding:18px 8px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#2E0C24;">
+              APDM · Montréal, Québec · <a href="mailto:info@apdmdistribution.com" style="color:#820D0D;">info@apdmdistribution.com</a>
             </td>
           </tr>
         </table>
@@ -104,8 +104,8 @@ function buildNotificationEmail(data: FormData, logoUrl: string | null) {
     .map(
       ([label, value]) => `
       <tr>
-        <td style="padding:8px 0;border-bottom:1px solid #4A1F1440;font-size:13px;font-weight:700;width:120px;vertical-align:top;">${escapeHtml(label)}</td>
-        <td style="padding:8px 0;border-bottom:1px solid #4A1F1440;font-size:14px;vertical-align:top;">${escapeHtml(value)}</td>
+        <td style="padding:8px 0;border-bottom:1px solid #2E0C2440;font-size:13px;font-weight:700;width:120px;vertical-align:top;">${escapeHtml(label)}</td>
+        <td style="padding:8px 0;border-bottom:1px solid #2E0C2440;font-size:14px;vertical-align:top;">${escapeHtml(value)}</td>
       </tr>`,
     )
     .join("");
@@ -115,7 +115,7 @@ function buildNotificationEmail(data: FormData, logoUrl: string | null) {
     preheader: `Message de ${nom} : ${sujet}`,
     logoUrl,
     bodyHtml: `
-      <h1 style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;color:#4A1F14;line-height:1.15;">
+      <h1 style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:400;color:#2E0C24;line-height:1.15;">
         Nouvelle demande de contact
       </h1>
       <p style="margin:0 0 22px;font-size:14px;line-height:1.5;">
@@ -125,12 +125,12 @@ function buildNotificationEmail(data: FormData, logoUrl: string | null) {
         ${rows}
       </table>
       <p style="margin:22px 0 8px;font-size:13px;font-weight:700;">Message</p>
-      <div style="padding:14px 16px;border:2px solid #4A1F14;border-radius:8px;background:#FFFAF0;font-size:14px;line-height:1.55;white-space:pre-wrap;">
+      <div style="padding:14px 16px;border:2px solid #2E0C24;border-radius:8px;background:#FFFAF0;font-size:14px;line-height:1.55;white-space:pre-wrap;">
 ${escapeHtml(message)}
       </div>
       <p style="margin:22px 0 0;font-size:13px;">
         Répondez directement à ce courriel pour joindre
-        <a href="mailto:${escapeHtml(courriel)}" style="color:#C4302F;">${escapeHtml(courriel)}</a>.
+        <a href="mailto:${escapeHtml(courriel)}" style="color:#820D0D;">${escapeHtml(courriel)}</a>.
       </p>
     `,
   });
@@ -162,10 +162,10 @@ function buildConfirmationEmail(data: FormData, logoUrl: string | null) {
     preheader: "Merci, on a bien reçu votre message. On vous revient sous 48 h.",
     logoUrl,
     bodyHtml: `
-      <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C4302F;">
+      <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#820D0D;">
         Message reçu
       </p>
-      <h1 style="margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;color:#4A1F14;line-height:1.15;">
+      <h1 style="margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;color:#2E0C24;line-height:1.15;">
         Merci, on a bien reçu votre message
       </h1>
       <p style="margin:0 0 18px;font-size:15px;line-height:1.55;">
@@ -173,12 +173,12 @@ function buildConfirmationEmail(data: FormData, logoUrl: string | null) {
       </p>
       <p style="margin:0 0 8px;font-size:13px;font-weight:700;">Rappel de votre demande</p>
       <p style="margin:0 0 6px;font-size:14px;"><strong>Sujet :</strong> ${escapeHtml(sujet)}</p>
-      <div style="padding:14px 16px;border:2px solid #4A1F14;border-radius:8px;background:#FFFAF0;font-size:14px;line-height:1.55;white-space:pre-wrap;">
+      <div style="padding:14px 16px;border:2px solid #2E0C24;border-radius:8px;background:#FFFAF0;font-size:14px;line-height:1.55;white-space:pre-wrap;">
 ${escapeHtml(message)}
       </div>
       <p style="margin:22px 0 0;font-size:14px;line-height:1.5;">
         À bientôt,<br />
-        <strong style="color:#C4302F;">L'équipe APDM</strong>
+        <strong style="color:#820D0D;">L'équipe APDM</strong>
       </p>
     `,
   });

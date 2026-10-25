@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* Beige page, brun machine, rouge titres et actions */
-  --blue: #fbefd5;
+  /* Codes Sara : fond beige, prune à la place du brun, rouge profond */
+  --blue: #e6d8bc;
   --cream: #fffaf0;
-  --brown: #4a1f14;
-  --machine: #574342;
-  --red: #c4302f;
+  --brown: #2e0c24;
+  --machine: #2e0c24;
+  --red: #820d0d;
   --white: #ffffff;
   --line: 3px solid var(--brown);
   --hard-shadow: 6px 6px 0 var(--brown);
